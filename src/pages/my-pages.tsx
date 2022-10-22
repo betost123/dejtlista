@@ -10,7 +10,7 @@ import Button from "../components/Button";
 import { contactInformation, MediaQuery } from "../utils/styling-helpers";
 import TextInput from "../components/TextInput";
 import { BankIdIcon } from "../components/icons/BankIdIcon";
-import { SubscriptionInfoBox } from "../components/InfoBox";
+import { MessageInfoBox, SubscriptionInfoBox } from "../components/InfoBox";
 import { ArrowRightIcon } from "../components/icons/ArrowRightIcon";
 import { BuilidngIcon, InfoIcon } from "../components/icons/InfoIcons";
 
@@ -137,20 +137,30 @@ const MyPages = () => {
           </ColumnContent>
           <ColumnContent md={4}>
             <TextContainer>
-              <Headline>Fastighetsägare</Headline>
+              <Headline>Meddelanden</Headline>
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "linear" }}
                 >
-                  <Body color='white'>Avtal anpassad för fastighetsägaren</Body>
-                  <HorizontalSpacer spacing={4} />
-                  <Headline color='white'>Bli kund hos oss</Headline>
-                  <Body color='white'>
-                    Registrera dig på 1 minut, skapa en profil som antingen
-                    hyresgäst eller hyresvärd.
-                  </Body>
+                  <Body color='white'>Du har 2 nya meddelanden</Body>
+                  <HorizontalSpacer spacing={2} />
+                  <MessageInfoBox
+                    title='Ladda upp ditt kontrakt för Gårdagatan 10'
+                    message='Meddelande från ZertifyEr kreditkoll blev godkänd, kontakta eran hyresvärd med vårat hyreslöfte och fortsätt kontraktskrivningen. Fortsätt sedan ärenden med att ladda upp kontraktet. Erat intyg finns tillgängligt i det pågående ärendet här.Fortsätt ärendet här.'
+                  />
+                  <HorizontalSpacer spacing={1} />
+                  <MessageInfoBox
+                    title='Din betalning för solhusgatan 7 misslyckades'
+                    message='Du har en missad betalning.'
+                  />
+                  <HorizontalSpacer spacing={1} />
+                  <MessageInfoBox
+                    title='Välkommen till Zertify'
+                    message='Du har en missad betalning.'
+                    oldMessage
+                  />
                   <HorizontalSpacer spacing={3} />
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Headline
@@ -158,30 +168,96 @@ const MyPages = () => {
                       textDecoration='underline'
                       fontSize={16}
                       letterSpacing={1}
-                      color='white'
+                      color='
+                      #C99100'
                     >
-                      Registrera med Bank Id
+                      Se alla dina meddelanden
                     </Headline>
                     <Spacer spacing={1} />
-                    <BankIdIcon />
+                    <ArrowRightIcon color='#C99100' />
                   </div>
+                  <HorizontalSpacer spacing={3} />
+                  <Headline color='white'>Dokument</Headline>
+                  <Body color='white'>Du har 1 nytt dokument</Body>
+                  <HorizontalSpacer spacing={3} />
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Headline
+                      textAlign='left'
+                      textDecoration='underline'
+                      fontSize={16}
+                      letterSpacing={1}
+                      color='
+                      #C99100'
+                    >
+                      Se alla dina dokument
+                    </Headline>
+                    <Spacer spacing={1} />
+                    <ArrowRightIcon color='#C99100' />
+                  </div>
+                  <HorizontalSpacer spacing={3} />
                 </motion.div>
               </HiddenContent>
             </TextContainer>
           </ColumnContent>
           <ColumnContent md={4}>
             <TextContainer>
-              <Headline>Mina sidor</Headline>
+              <Headline>Cova AB</Headline>
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "40vh" }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "linear" }}
                 >
-                  <Body color='white'>
-                    Hantera dina ärenden och personliga uppgifter
-                  </Body>
-                  <HorizontalSpacer spacing={4} />
+                  <Headline
+                    textAlign='left'
+                    textDecoration='underline'
+                    fontSize={16}
+                    letterSpacing={1}
+                    color='white'
+                  >
+                    Villkor för hantering av dina personuppgifter
+                  </Headline>
+                  <HorizontalSpacer spacing={2} />
+                  <Row>
+                    <Col md={6} style={{ padding: "1rem" }}>
+                      <SmallHeadline color='white'>
+                        Organisationsnummer
+                      </SmallHeadline>
+                      <Body color='white'>551378-4012</Body>
+                    </Col>
+                    <Col md={6} style={{ padding: "1rem" }}>
+                      <SmallHeadline color='white'>Företag</SmallHeadline>
+                      <Body color='white'>cova ab</Body>
+                    </Col>
+                    <Col md={6} style={{ padding: "1rem" }}>
+                      <SmallHeadline color='white'>Företrädare</SmallHeadline>
+                      <Body color='white'>Tommy Eriksson</Body>
+                    </Col>
+                    <Col md={6} style={{ padding: "1rem" }}>
+                      <SmallHeadline color='white'>Email</SmallHeadline>
+                      <Body color='white'>tommy@cova.se</Body>
+                    </Col>
+                    <Col md={6} style={{ padding: "1rem" }}>
+                      <SmallHeadline color='white'>Telefonnummer</SmallHeadline>
+                      <Body color='white'>-</Body>
+                    </Col>
+                  </Row>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Headline
+                      textAlign='left'
+                      textDecoration='underline'
+                      fontSize={16}
+                      letterSpacing={1}
+                      color='
+                      #C99100'
+                    >
+                      Ändra kontaktuppgifter
+                    </Headline>
+                    <Spacer spacing={1} />
+                    <ArrowRightIcon color='#C99100' />
+                  </div>
+                  <HorizontalSpacer spacing={3} />
+                  <Headline color='white'>Kortinformation</Headline>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Headline
                       textAlign='left'
@@ -190,55 +266,27 @@ const MyPages = () => {
                       letterSpacing={1}
                       color='white'
                     >
-                      Logga in med Bank Id
+                      Villkor för hantering av kortinformation
                     </Headline>
-                    <Spacer spacing={1} />
-                    <BankIdIcon />
                   </div>
                   <HorizontalSpacer spacing={3} />
-                  <Headline color='white'>Kontakta oss</Headline>
-                  <Body color='white'>
-                    Har du frågor kring? Ring oss eller skriv ett meddelande så
-                    hjälper vi dig så fort vi kan.
-                  </Body>
-                  <HorizontalSpacer spacing={2} />
-                  <SmallHeadline color='white'>Ring oss</SmallHeadline>
-                  <a
-                    href={`tel:${contactInformation.phone.value}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Body color='white'>{contactInformation.phone.title}</Body>
-                  </a>
-                  <HorizontalSpacer spacing={1} />
-                  <Row>
-                    <Col md={6}>
-                      <Body color='white'>Måndag - Fredag</Body>
-                      <Body color='white'>08.00 - 20.00</Body>
-                    </Col>
-                    <Col md={6}>
-                      <Body color='white'>Helgdagar</Body>
-                      <Body color='white'>09.00 - 16.00</Body>
-                    </Col>
-                  </Row>
-                  <HorizontalSpacer spacing={1} />
-                  <Row>
-                    <Col md={6}>
-                      <SmallHeadline color='white'>Mejla oss</SmallHeadline>
-                      <a
-                        href={`mailto:${contactInformation.email.value}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Body color='white'>
-                          {contactInformation.email.title}
-                        </Body>
-                      </a>
-                    </Col>
-                    <Col md={6}>
-                      <SmallHeadline color='white'>Besöksaddress</SmallHeadline>
-                      <Body color='white'>Suhrtevägen 12</Body>
-                      <Body color='white'>415 29 Göteborg</Body>
-                    </Col>
-                  </Row>
+                  <SmallHeadline color='white'>Kortnummer</SmallHeadline>
+                  <Body color='white'>XXXX XXXX XXXX XX24</Body>
+                  <HorizontalSpacer spacing={3} />
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Headline
+                      textAlign='left'
+                      textDecoration='underline'
+                      fontSize={16}
+                      letterSpacing={1}
+                      color='
+                      #C99100'
+                    >
+                      Ändra kortinformation
+                    </Headline>
+                    <Spacer spacing={1} />
+                    <ArrowRightIcon color='#C99100' />
+                  </div>
                 </motion.div>
               </HiddenContent>
             </TextContainer>

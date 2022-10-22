@@ -77,7 +77,7 @@ const NavBar: React.FunctionComponent = () => {
 
   return (
     <NavBarContainer>
-      <Link to='' style={{ transform: "scale(0.4)", marginLeft: "-10rem" }}>
+      <Link to='/' style={{ transform: "scale(0.4)", marginLeft: "-10rem" }}>
         <Logo />
       </Link>
       <HamburgerButton onClick={() => setMenuOpen(!menuOpen)}>

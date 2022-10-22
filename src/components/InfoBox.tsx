@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import * as React from "react";
 import { Col, Row } from "react-grid-system";
 import styled from "styled-components";
@@ -5,6 +6,8 @@ import {
   CheckboxGreenIcon,
   ChevronRightIcon,
   CrossRedIcon,
+  CrossWhiteIcon,
+  InfoIcon,
 } from "./icons/InfoIcons";
 import { Spacer } from "./spacers";
 import { Body, Headline, SmallHeadline } from "./typography";
@@ -91,5 +94,62 @@ export const SubscriptionInfoBox: React.FunctionComponent<
         </Row>
       </ContentText>
     </Box>
+  );
+};
+
+interface MessageProps {
+  title: string;
+  message: string;
+  oldMessage?: boolean;
+}
+
+const MessageContainer = styled.div<{ oldMessage?: boolean }>`
+  opacity: ${(props) => (props.oldMessage ? 0.5 : 1)};
+`;
+
+export const MessageInfoBox: React.FunctionComponent<MessageProps> = ({
+  title,
+  message,
+  oldMessage,
+}) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <MessageContainer oldMessage={oldMessage}>
+      <Box>
+        <TitleContent onClick={() => setIsOpen(!isOpen)}>
+          <div style={{ alignItems: "center", display: "flex" }}>
+            <InfoIcon />
+            <Spacer spacing={1} />
+            <SmallHeadline color='white' fontSize={16}>
+              {title}
+            </SmallHeadline>
+          </div>
+          <motion.div
+            animate={{
+              rotate: isOpen ? 0 : 45,
+            }}
+          >
+            <CrossWhiteIcon />
+          </motion.div>
+        </TitleContent>
+        {isOpen && (
+          <>
+            <Divider />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8, ease: "easeIn" }}
+            >
+              <ContentText>
+                <Body color='white' fontSize={14}>
+                  {message}
+                </Body>
+              </ContentText>
+            </motion.div>
+          </>
+        )}
+      </Box>
+    </MessageContainer>
   );
 };
