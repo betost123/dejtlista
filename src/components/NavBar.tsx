@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import * as React from "react";
 import { Hidden } from "react-grid-system";
@@ -83,21 +84,28 @@ const NavBar: React.FunctionComponent = () => {
         <HamburgerIcon />
       </HamburgerButton>
       <MenuContainer open={menuOpen}>
-        <MenuTop onClick={() => setMenuOpen(!menuOpen)}>
-          <CrossIcon />
-          <Spacer spacing={6} />
-        </MenuTop>
-        <MenuSlide open={menuOpen}>
-          <NavItem to='/' onClick={() => setMenuOpen(false)}>
-            Hem
-          </NavItem>
-          <NavItem to='/my-pages' onClick={() => setMenuOpen(false)}>
-            Mina sidor
-          </NavItem>
-          <NavItem to='/customer-service' onClick={() => setMenuOpen(false)}>
-            Kundservice
-          </NavItem>
-        </MenuSlide>
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "100%" }}
+          transition={{ duration: 0.8, ease: "linear" }}
+          style={{ height: "100%" }}
+        >
+          <MenuTop onClick={() => setMenuOpen(!menuOpen)}>
+            <CrossIcon />
+            <Spacer spacing={6} />
+          </MenuTop>
+          <MenuSlide open={menuOpen}>
+            <NavItem to='/' onClick={() => setMenuOpen(false)}>
+              Hem
+            </NavItem>
+            <NavItem to='/my-pages' onClick={() => setMenuOpen(false)}>
+              Mina sidor
+            </NavItem>
+            <NavItem to='/customer-service' onClick={() => setMenuOpen(false)}>
+              Kundservice
+            </NavItem>
+          </MenuSlide>
+        </motion.div>
       </MenuContainer>
     </NavBarContainer>
   );

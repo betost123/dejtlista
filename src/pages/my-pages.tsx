@@ -10,6 +10,9 @@ import Button from "../components/Button";
 import { contactInformation, MediaQuery } from "../utils/styling-helpers";
 import TextInput from "../components/TextInput";
 import { BankIdIcon } from "../components/icons/BankIdIcon";
+import { SubscriptionInfoBox } from "../components/InfoBox";
+import { ArrowRightIcon } from "../components/icons/ArrowRightIcon";
+import { BuilidngIcon, InfoIcon } from "../components/icons/InfoIcons";
 
 const HeroImage = styled.img`
   object-fit: cover;
@@ -76,39 +79,58 @@ const MyPages = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "linear" }}
                 >
-                  <Body color='white'>Avtal anpassad för hyresgästen</Body>
+                  <Body color='white'>Du har 1 pågående ärende</Body>
                   <HorizontalSpacer spacing={2} />
-                  <Headline color='white'>Beräkna din årspremie!</Headline>
-                  <Body color='white'>
-                    Slipp krånglet och frigör ditt kapital med Zertify.
-                    Bankdepositionen är en börda, vi låter dig jobba med ditt
-                    kapital. <br />
-                    <br />
-                    Få ditt pris med våran automatiserade beräkning baserad på
-                    dagens marknadsvärde.
-                  </Body>
+                  <SubscriptionInfoBox
+                    link='/'
+                    title='Pågående'
+                    icon={<InfoIcon />}
+                    subjectId='A1006B'
+                    cost={{ cost: 5600, currency: "SEK" }}
+                  />
+                  <HorizontalSpacer spacing={1} />
+                  <SubscriptionInfoBox
+                    link='/'
+                    title='Gårdafastigheter AB / Gårdavägen 10'
+                    icon={<BuilidngIcon />}
+                    subjectId='10067A'
+                    cost={{
+                      cost: 7600,
+                      currency: "SEK",
+                      paymentInterval: "halvår",
+                    }}
+                    nextPayment='22-02-07'
+                    checked
+                  />
+                  <HorizontalSpacer spacing={1} />
+                  <SubscriptionInfoBox
+                    link='/'
+                    title='Göteborgs lokaler / Solhusgatan 7'
+                    icon={<BuilidngIcon />}
+                    subjectId='10889A'
+                    cost={{
+                      cost: 3800,
+                      currency: "SEK",
+                      paymentInterval: "månad",
+                    }}
+                    nextPayment='22-02-07'
+                    crossed
+                  />
                   <HorizontalSpacer spacing={3} />
-                  <Row>
-                    <Col md={6}>
-                      <TextInput
-                        title='Deposition'
-                        placeholder='300 000'
-                        endAdornmentText='SEK'
-                      />
-                    </Col>
-                    <Col md={6}>
-                      <TextInput
-                        title='Årlig premie'
-                        placeholder='8000'
-                        endAdornmentText='SEK*'
-                        hintText='*Priset ovan är endast riktpriser, alla ansökningar kommer att beräknas unikt'
-                      />
-                    </Col>
-                    <HorizontalSpacer spacing={8} />
-                    <Col md={8}>
-                      <Button title='Ansök' />
-                    </Col>
-                  </Row>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Headline
+                      textAlign='left'
+                      textDecoration='underline'
+                      fontSize={16}
+                      letterSpacing={1}
+                      color='
+                      #C99100'
+                    >
+                      Se alla dina prenumerationer
+                    </Headline>
+                    <Spacer spacing={1} />
+                    <ArrowRightIcon color='#C99100' />
+                  </div>
                 </motion.div>
               </HiddenContent>
             </TextContainer>
