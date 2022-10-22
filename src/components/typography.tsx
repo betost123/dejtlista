@@ -12,12 +12,18 @@ export const Headline = styled.div<{
   color?: string;
   fontWeight?: number;
   textAlign?: string;
+  textDecoration?: string;
+  letterSpacing?: number;
 }>`
   color: ${(props) => props.color ?? "black"};
   font-family: Montserrat, serif;
   font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : 600)};
   font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : "22px")};
   text-align: ${(props) => (props.textAlign ? props.textAlign : "left")};
+  letter-spacing: ${(props) =>
+    props.letterSpacing ? `${props.letterSpacing}px` : 0};
+  ${(props) =>
+    props.textDecoration && `text-decoration: ${props.textDecoration}`};
 `;
 
 export const Body = styled.div<{
@@ -28,7 +34,7 @@ export const Body = styled.div<{
 }>`
   color: ${(props) => props.color ?? "black"};
   font-family: Montserrat, serif;
-  font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : 400)};
+  font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : 300)};
   font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : "16px")};
   text-align: ${(props) => (props.textAlign ? props.textAlign : "left")};
 `;

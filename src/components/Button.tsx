@@ -12,10 +12,10 @@ interface ButtonProps {
 
 const ButtonContainer = styled.button`
   border: 0;
-  background-color: black;
+  background-color: white;
   padding: 1rem;
   width: 100%;
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       }}
     >
       <ButtonContainer onClick={onClick}>
-        <ActionText>{title}</ActionText>
+        <ActionText color='black'>{title}</ActionText>
         <Spacer spacing={1} />
         {icon}
       </ButtonContainer>

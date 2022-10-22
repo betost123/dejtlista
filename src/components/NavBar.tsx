@@ -2,23 +2,21 @@ import { Link } from "gatsby";
 import * as React from "react";
 import { Hidden } from "react-grid-system";
 import styled from "styled-components";
+import { HamburgerIcon } from "./icons/HamburgerIcon";
 import { Logo } from "./icons/logo";
-import { Spacer } from "./spacers";
 
 const NavBarContainer = styled.div`
-  width: 100%;
-  height: 60px;
+  width: 95%;
   color: black;
   font-family: Montserrat, serif;
-  padding: 1rem;
   background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.5rem;
   position: fixed;
-  margin-left: -4rem;
   top: 0;
+  margin-top: -2rem;
+  z-index: 3;
 `;
 
 const NavItem = styled(Link)`
@@ -38,24 +36,10 @@ const NavItem = styled(Link)`
 const NavBar: React.FunctionComponent = () => {
   return (
     <NavBarContainer>
-      <Link to='' style={{ transform: "scale(0.6)", marginLeft: "-1rem" }}>
+      <Link to='' style={{ transform: "scale(0.4)", marginLeft: "-10rem" }}>
         <Logo />
       </Link>
-      <Hidden xs>
-        <NavItem
-          to=''
-          activeStyle={{
-            opacity: 1,
-            textDecoration: "underline",
-            textDecorationThickness: 1,
-          }}
-        >
-          Hyresgäst
-        </NavItem>
-        <NavItem to='/rent'>Hyreslöfte</NavItem>
-        <NavItem to='/rent'>Kontakt</NavItem>
-        <NavItem to='/rent'>Mina sidor</NavItem>
-      </Hidden>
+      <HamburgerIcon />
     </NavBarContainer>
   );
 };

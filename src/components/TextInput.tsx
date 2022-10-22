@@ -12,7 +12,7 @@ interface TextInputProps {
 }
 
 const InputContainer = styled.div`
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   opacity: 0.8;
 
   :hover {
@@ -35,18 +35,20 @@ const Input = styled.input`
   font-family: -apple-system, Montserrat, sans-serif, serif;
   width: 100%;
   background: transparent;
+  color: white;
 
   ${MediaQuery.XS} {
     font-size: 14px;
   }
 `;
 
-const HintTextStyle = styled.p`
-    font-size: 12px;
-    color: #656464:
-    font-weight: 400;
-    font-style: italic;
-    margin-top: 8px;
+const HintTextStyle = styled.div`
+  font-size: 12px;
+  color: white;
+  opacity: 0.4;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 8px;
 `;
 
 const TextInput: React.FunctionComponent<TextInputProps> = ({
@@ -58,12 +60,12 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({
   return (
     <>
       <InputContainer>
-        <Body fontWeight={900}>{title}</Body>
+        <Body fontWeight={900} color='white'>
+          {title}
+        </Body>
         <Content>
           <Input placeholder={placeholder} />
-          {endAdornmentText && (
-            <ActionText color='black'>{endAdornmentText}</ActionText>
-          )}
+          {endAdornmentText && <ActionText>{endAdornmentText}</ActionText>}
         </Content>
       </InputContainer>
       {hintText && <HintTextStyle>{hintText}</HintTextStyle>}

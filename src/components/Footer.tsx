@@ -7,8 +7,9 @@ import { ActionText, Body } from "./typography";
 
 const ContentContainer = styled.div`
   width: 100vw;
-  background-color: rgba(58, 58, 58, 1);
+  background-color: black;
   padding: 2rem;
+  margin-top: -1rem;
 `;
 
 const LinkItem = styled(Link)`

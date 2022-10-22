@@ -28,7 +28,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
       <NavBar />
       <GlobalStyle />
       {children}
-      <HorizontalSpacer spacing={10} />
       <Footer />
     </React.Fragment>
   );
