@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { HeadFC } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "../images/Background.png";
+import BackgroundImage from "../images/pages-background.png";
 import { motion } from "framer-motion";
 import { Col, Row } from "react-grid-system";
 import { Body, Headline, SmallHeadline } from "../components/typography";
@@ -61,7 +61,7 @@ const HiddenContent = styled.div`
   display: none;
 `;
 
-const IndexPage = () => {
+const MyPages = () => {
   return (
     <div>
       <HeroImage src={BackgroundImage} />
@@ -69,7 +69,7 @@ const IndexPage = () => {
         <Row style={{ width: "100%" }} gutterWidth={0}>
           <ColumnContent md={4}>
             <TextContainer>
-              <Headline>Hyresgäst</Headline>
+              <Headline>Prenumerationer</Headline>
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
@@ -227,6 +227,6 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default MyPages;
 
 export const Head: HeadFC = () => <title>Zertified</title>;

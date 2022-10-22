@@ -9,7 +9,7 @@ const ContentContainer = styled.div`
   width: 100vw;
   background-color: black;
   padding: 2rem;
-  margin-top: -1rem;
+  margin-top: -1.5rem;
 `;
 
 const LinkItem = styled(Link)`
@@ -29,40 +29,30 @@ const LinkColumnSection = styled.div`
 const Footer: React.FunctionComponent = () => (
   <ContentContainer>
     <Container>
-      <Row gutterWidth={16} justify='between'>
-        <Col md={3} xs={6}>
-          <LogoSmallWhite />
-        </Col>
-        <Col md={3} xs={6}>
+      <Row gutterWidth={16} justify='center' align='center'>
+        <Col md={4} xs={6}>
           <LinkColumnSection>
             <ActionText color='white' textAlign='left'>
               Om Zertify
             </ActionText>
-            <LinkItem to=''>Contact us</LinkItem>
-            <LinkItem to=''>Investors</LinkItem>
-            <LinkItem to=''>Sustainability</LinkItem>
-            <LinkItem to=''>Work with us</LinkItem>
+            <LinkItem to=''>Teamet</LinkItem>
+            <LinkItem to=''>Våra kunder</LinkItem>
           </LinkColumnSection>
         </Col>
-        <Col md={3} xs={6}>
+        <Col md={4} xs={6}>
           <LinkColumnSection>
             <ActionText color='white' textAlign='left'>
-              Customer Service
+              Copyright 2022 @ Zertify AB
             </ActionText>
-            <LinkItem to=''>Payments</LinkItem>
-            <LinkItem to=''>Return and Refunds</LinkItem>
-            <LinkItem to=''>FAQ</LinkItem>
-            <LinkItem to=''>Terms and Conditions</LinkItem>
           </LinkColumnSection>
         </Col>
-        <Col md={3} xs={6}>
+        <Col md={4} xs={6}>
           <LinkColumnSection>
             <ActionText color='white' textAlign='left'>
-              Follow Us
+              Kundservice
             </ActionText>
-            <LinkItem to=''>Instagram</LinkItem>
-            <LinkItem to=''>TikTok</LinkItem>
-            <LinkItem to=''>Newsletter</LinkItem>
+            <LinkItem to=''>Kontakta oss</LinkItem>
+            <LinkItem to=''>Villkor</LinkItem>
           </LinkColumnSection>
         </Col>
       </Row>

@@ -20,3 +20,30 @@ export const HamburgerIcon = () => (
     <line y1='2' x2='40' y2='2' stroke='black' stroke-width='4' />
   </svg>
 );
+
+export const CrossIcon = () => (
+  <svg
+    width='33'
+    height='32'
+    viewBox='0 0 33 32'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <line
+      x1='2.41275'
+      y1='1.58579'
+      x2='30.697'
+      y2='29.8701'
+      stroke='white'
+      stroke-width='4'
+    />
+    <line
+      x1='2.58432'
+      y1='29.87'
+      x2='30.8686'
+      y2='1.5857'
+      stroke='white'
+      stroke-width='4'
+    />
+  </svg>
+);
