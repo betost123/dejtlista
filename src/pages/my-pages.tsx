@@ -73,6 +73,7 @@ const MyPages = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Prenumerationer</Headline>
+              <HorizontalSpacer spacing={1} />
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
@@ -138,6 +139,7 @@ const MyPages = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Meddelanden</Headline>
+              <HorizontalSpacer spacing={1} />
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
@@ -202,6 +204,8 @@ const MyPages = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Cova AB</Headline>
+              <HorizontalSpacer spacing={1} />
+
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "40vh" }}

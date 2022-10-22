@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import * as React from "react";
 import { Col, Container, Row } from "react-grid-system";
 import styled from "styled-components";
-import { LogoSmallWhite } from "./icons/logo";
 import { ActionText, Body } from "./typography";
 
 const ContentContainer = styled.div`
@@ -35,8 +34,8 @@ const Footer: React.FunctionComponent = () => (
             <ActionText color='white' textAlign='left'>
               Om Zertify
             </ActionText>
-            <LinkItem to=''>Teamet</LinkItem>
-            <LinkItem to=''>Våra kunder</LinkItem>
+            <LinkItem to='/team'>Teamet</LinkItem>
+            <LinkItem to='/our-customers'>Våra kunder</LinkItem>
           </LinkColumnSection>
         </Col>
         <Col md={4} xs={6}>
@@ -51,8 +50,8 @@ const Footer: React.FunctionComponent = () => (
             <ActionText color='white' textAlign='left'>
               Kundservice
             </ActionText>
-            <LinkItem to=''>Kontakta oss</LinkItem>
-            <LinkItem to=''>Villkor</LinkItem>
+            <LinkItem to='/customer-service'>Kontakta oss</LinkItem>
+            <LinkItem to='/terms'>Villkor</LinkItem>
           </LinkColumnSection>
         </Col>
       </Row>

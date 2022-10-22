@@ -70,6 +70,7 @@ const IndexPage = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Hyresgäst</Headline>
+              <HorizontalSpacer spacing={1} />
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
@@ -116,6 +117,7 @@ const IndexPage = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Fastighetsägare</Headline>
+              <HorizontalSpacer spacing={1} />
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "20vh" }}
@@ -150,6 +152,8 @@ const IndexPage = () => {
           <ColumnContent md={4}>
             <TextContainer>
               <Headline>Mina sidor</Headline>
+              <HorizontalSpacer spacing={1} />
+
               <HiddenContent>
                 <motion.div
                   initial={{ opacity: 0, y: "40vh" }}

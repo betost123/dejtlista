@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import * as React from "react";
-import { Hidden } from "react-grid-system";
 import styled from "styled-components";
 import { CrossIcon, HamburgerIcon } from "./icons/HamburgerIcon";
 import { Logo } from "./icons/logo";
 import { Spacer } from "./spacers";
 
 const NavBarContainer = styled.div`
-  width: 95%;
+  width: 100%;
   color: black;
   font-family: Montserrat, serif;
   background: transparent;
@@ -16,9 +15,16 @@ const NavBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: 0;
+  top: 10;
+  right: 0;
   margin-top: -2rem;
   z-index: 100;
+  padding-right: 3rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0)
+  );
 `;
 
 const NavItem = styled(Link)`
@@ -44,8 +50,18 @@ const HamburgerButton = styled.div<{ open?: boolean }>`
   }
 `;
 
+const MenuContainer = styled.div<{ open: boolean }>`
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 600px;
+  display: ${(props) => (props.open ? "block" : "none")};
+  margin-top: 1rem;
+`;
+
 const MenuSlide = styled.div<{ open: boolean }>`
-  height: 100%;
+  height: 94vh;
   width: 100%;
   background-color: #232323;
   display: flex;
@@ -53,22 +69,12 @@ const MenuSlide = styled.div<{ open: boolean }>`
   justify-content: center;
 `;
 
-const MenuContainer = styled.div<{ open: boolean }>`
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  right: -6rem;
-  width: 600px;
-  display: ${(props) => (props.open ? "block" : "none")};
-  margin-top: 2rem;
-`;
-
 const MenuTop = styled.div`
   width: 100%;
   background-color: #232323;
   display: flex;
   justify-content: flex-end;
-  padding-top: 2rem;
+  padding-top: 3rem;
   cursor: pointer;
 `;
 
@@ -77,7 +83,7 @@ const NavBar: React.FunctionComponent = () => {
 
   return (
     <NavBarContainer>
-      <Link to='/' style={{ transform: "scale(0.4)", marginLeft: "-10rem" }}>
+      <Link to='/' style={{ transform: "scale(0.4)", marginLeft: "-5rem" }}>
         <Logo />
       </Link>
       <HamburgerButton onClick={() => setMenuOpen(!menuOpen)}>
@@ -85,15 +91,15 @@ const NavBar: React.FunctionComponent = () => {
       </HamburgerButton>
       <MenuContainer open={menuOpen}>
         <motion.div
-          initial={{ height: 0 }}
-          whileInView={{ height: "100%" }}
-          transition={{ duration: 0.8, ease: "linear" }}
-          style={{ height: "100%" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: "linear" }}
         >
           <MenuTop onClick={() => setMenuOpen(!menuOpen)}>
             <CrossIcon />
-            <Spacer spacing={6} />
+            <Spacer spacing={3.5} />
           </MenuTop>
+
           <MenuSlide open={menuOpen}>
             <NavItem to='/' onClick={() => setMenuOpen(false)}>
               Hem
