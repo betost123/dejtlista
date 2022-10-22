@@ -18,7 +18,7 @@ const HeroImage = styled.img`
   margin-top: -1rem;
 
   ${MediaQuery.XS} {
-    height: 70vh;
+    height: 80vh;
   }
 `;
 
@@ -27,6 +27,10 @@ const ContentContainer = styled.div`
   display: flex;
   top: 0;
   width: 100%;
+
+  ${MediaQuery.XS} {
+    position: relative;
+  }
 `;
 
 const ColumnContent = styled(Col)`
@@ -43,6 +47,10 @@ const ColumnContent = styled(Col)`
       display: block;
     }
   }
+
+  ${MediaQuery.XS} {
+    background-color: #232323;
+  }
 `;
 
 const TextContainer = styled.div`
@@ -55,10 +63,20 @@ const TextContainer = styled.div`
       color: white;
     }
   }
+
+  ${MediaQuery.XS} {
+    > * {
+      color: white;
+    }
+  }
 `;
 
 const HiddenContent = styled.div`
   display: none;
+
+  ${MediaQuery.XS} {
+    display: block;
+  }
 `;
 
 const IndexPage = () => {

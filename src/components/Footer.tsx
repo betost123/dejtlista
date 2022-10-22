@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
 import * as React from "react";
-import { Col, Container, Row } from "react-grid-system";
+import { Col, Container, Hidden, Row, Visible } from "react-grid-system";
 import styled from "styled-components";
+import { HorizontalSpacer } from "./spacers";
 import { ActionText, Body } from "./typography";
 
 const ContentContainer = styled.div`
@@ -38,13 +39,15 @@ const Footer: React.FunctionComponent = () => (
             <LinkItem to='/our-customers'>Våra kunder</LinkItem>
           </LinkColumnSection>
         </Col>
-        <Col md={4} xs={6}>
-          <LinkColumnSection>
-            <ActionText color='white' textAlign='left'>
-              Copyright 2022 @ Zertify AB
-            </ActionText>
-          </LinkColumnSection>
-        </Col>
+        <Hidden xs>
+          <Col md={4} xs={6}>
+            <LinkColumnSection>
+              <ActionText color='white' textAlign='left'>
+                Copyright 2022 @ Zertify AB
+              </ActionText>
+            </LinkColumnSection>
+          </Col>
+        </Hidden>
         <Col md={4} xs={6}>
           <LinkColumnSection>
             <ActionText color='white' textAlign='left'>
@@ -54,6 +57,15 @@ const Footer: React.FunctionComponent = () => (
             <LinkItem to='/terms'>Villkor</LinkItem>
           </LinkColumnSection>
         </Col>
+        <Visible xs>
+          <Col md={4} xs={12}>
+            <HorizontalSpacer spacing={4} />
+
+            <ActionText color='white' textAlign='left'>
+              Copyright 2022 @ Zertify AB
+            </ActionText>
+          </Col>
+        </Visible>
       </Row>
     </Container>
   </ContentContainer>
