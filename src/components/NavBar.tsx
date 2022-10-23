@@ -97,7 +97,7 @@ const NavBar: React.FunctionComponent = () => {
         >
           <MenuTop onClick={() => setMenuOpen(!menuOpen)}>
             <CrossIcon />
-            <Spacer spacing={3.5} />
+            <div style={{ width: "3.5rem" }} />
           </MenuTop>
 
           <MenuSlide open={menuOpen}>

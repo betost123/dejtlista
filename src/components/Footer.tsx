@@ -6,7 +6,6 @@ import { HorizontalSpacer } from "./spacers";
 import { ActionText, Body } from "./typography";
 
 const ContentContainer = styled.div`
-  width: 100%;
   background-color: black;
   padding: 2rem;
 `;
