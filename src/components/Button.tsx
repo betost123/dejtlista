@@ -8,11 +8,13 @@ interface ButtonProps {
   title: string;
   icon?: React.ReactNode;
   onClick?: () => void;
+  variant?: "secondary" | "primary";
 }
 
-const ButtonContainer = styled.button`
+const ButtonContainer = styled.button<{ variant: "primary" | "secondary" }>`
   border: 0;
-  background-color: white;
+  background-color: ${(props) =>
+    props.variant === "primary" ? "white" : "black"};
   padding: 1rem;
   width: 100%;
   color: black;
@@ -26,6 +28,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   title,
   icon,
   onClick,
+  variant = "primary",
 }) => {
   return (
     <motion.div
@@ -34,8 +37,10 @@ const Button: React.FunctionComponent<ButtonProps> = ({
         transition: { duration: 0.5, ease: "easeInOut" },
       }}
     >
-      <ButtonContainer onClick={onClick}>
-        <ActionText color='black'>{title}</ActionText>
+      <ButtonContainer onClick={onClick} variant={variant}>
+        <ActionText color={variant === "primary" ? "black" : "white"}>
+          {title}
+        </ActionText>
         <Spacer spacing={1} />
         {icon}
       </ButtonContainer>

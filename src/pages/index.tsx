@@ -2,7 +2,7 @@ import * as React from "react";
 import type { HeadFC } from "gatsby";
 import styled from "styled-components";
 import BackgroundImage from "../images/Background.png";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Col, Row } from "react-grid-system";
 import { Body, Headline, SmallHeadline } from "../components/typography";
 import { HorizontalSpacer, Spacer } from "../components/spacers";
@@ -10,6 +10,8 @@ import Button from "../components/Button";
 import { contactInformation, MediaQuery } from "../utils/styling-helpers";
 import TextInput from "../components/TextInput";
 import { BankIdIcon } from "../components/icons/BankIdIcon";
+import Modal from "../components/modals/Modal";
+import { ApplyContent } from "../components/modals/ModalContents";
 
 const HeroImage = styled.img`
   object-fit: cover;
@@ -80,6 +82,8 @@ const HiddenContent = styled.div`
 `;
 
 const IndexPage = () => {
+  const [modalOpen, setModalOpen] = React.useState(false);
+
   return (
     <div>
       <HeroImage src={BackgroundImage} />
@@ -125,7 +129,10 @@ const IndexPage = () => {
                     </Col>
                     <HorizontalSpacer spacing={8} />
                     <Col md={8}>
-                      <Button title='Ansök' />
+                      <Button
+                        title='Ansök'
+                        onClick={() => setModalOpen(true)}
+                      />
                     </Col>
                   </Row>
                 </motion.div>
@@ -245,6 +252,16 @@ const IndexPage = () => {
           </ColumnContent>
         </Row>
       </ContentContainer>
+      <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
+        {modalOpen && (
+          <Modal
+            handleClose={() => setModalOpen(false)}
+            modalContent={
+              <ApplyContent handleClose={() => setModalOpen(false)} />
+            }
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

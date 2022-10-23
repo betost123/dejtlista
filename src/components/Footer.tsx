@@ -6,10 +6,9 @@ import { HorizontalSpacer } from "./spacers";
 import { ActionText, Body } from "./typography";
 
 const ContentContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   background-color: black;
   padding: 2rem;
-  margin-top: -1.5rem;
 `;
 
 const LinkItem = styled(Link)`
