@@ -6,20 +6,36 @@ import { ArrowRightIcon } from "../icons/ArrowRightIcon";
 import { CrossWhiteIcon } from "../icons/InfoIcons";
 import { HorizontalSpacer } from "../spacers";
 import TextInput from "../TextInput";
-import { Body, Headline } from "../typography";
+import { Body, Headline, SmallHeadline } from "../typography";
 
 const ContentContainer = styled.div`
   padding: 2rem;
   background-color: #ded8d2;
+  width: 80%;
 `;
 
 interface Props {
-  handleClose?: () => void;
+  handleClose: () => void;
 }
 
 export const ApplyContent: React.FunctionComponent<Props> = ({
   handleClose,
 }) => {
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState(false);
+
+  const onChangePassword = (event: any) => {
+    setPassword(event.target.value);
+  };
+
+  const onClickLogIn = () => {
+    if (password.toLowerCase() === "bingo" || password === "jagälskardig") {
+      handleClose();
+    } else {
+      setError(true);
+    }
+  };
+
   return (
     <ContentContainer>
       <div
@@ -29,72 +45,33 @@ export const ApplyContent: React.FunctionComponent<Props> = ({
           alignItems: "center",
         }}
       >
-        <Headline>Ansök om hyreslöfte</Headline>
-        <div style={{ cursor: "pointer" }} onClick={handleClose}>
-          <CrossWhiteIcon color='black' />
-        </div>
+        <Headline>hej</Headline>
       </div>
-      <HorizontalSpacer spacing={1} />
-      <Col md={8} xs={12}>
-        <Body>
-          Vid en ansökning kommer en identifiering med BankID att behövas. En
-          kreditkontroll kommer även att göras. Ett konto kommer att automatisk
-          skapas när identifiering görs. Logga in med BankID för att se dina
-          ärenden.
-        </Body>
-      </Col>
+
       <HorizontalSpacer spacing={4} />
 
       <Row>
         <Col md={6}>
           <TextInput
-            placeholder='300 000'
-            title='Desposition'
-            endAdornmentText='SEK'
+            title='Lösenord'
             variant='secondary'
-          />
-          <HorizontalSpacer spacing={1} />
-        </Col>
-        <Col md={6}>
-          <TextInput
-            placeholder='551378-4012'
-            title='Organisationsnummer'
-            variant='secondary'
-          />
-          <HorizontalSpacer spacing={1} />
-        </Col>
-        <Col md={6}>
-          <TextInput
-            placeholder='cova ab'
-            title='Företag'
-            variant='secondary'
-          />
-          <HorizontalSpacer spacing={1} />
-        </Col>
-        <Col md={6}>
-          <TextInput
-            placeholder='tommy@cova.se'
-            title='Email'
-            variant='secondary'
+            onChange={onChangePassword}
           />
           <HorizontalSpacer spacing={1} />
         </Col>
       </Row>
-      <HorizontalSpacer spacing={1} />
+      <HorizontalSpacer spacing={3} />
       <Col md={6}>
         <Button
-          title='Ansök med Bank Id'
+          title='Logga in'
           icon={<ArrowRightIcon />}
           variant='secondary'
+          onClick={onClickLogIn}
         />
       </Col>
       <HorizontalSpacer spacing={3} />
-      <Col md={8} xs={12}>
-        <Body>
-          Mer information kring villkor och regler här. Vid ansökning godkänner
-          du härmed att gå med en kreditkontroll. Läs mer om våra villkor här
-        </Body>
-      </Col>
+      {error && <SmallHeadline>fel lösen</SmallHeadline>}
+      <HorizontalSpacer spacing={3} />
     </ContentContainer>
   );
 };

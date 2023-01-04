@@ -9,10 +9,10 @@ interface Props {
 }
 
 const ModalStyle = styled(motion.div)`
-  width: clamp(50%, 700px, 90%);
-  height: min(50%, 300px);
+  width: 100vw;
+  height: 90vh;
 
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@ const Modal: React.FunctionComponent<Props> = ({
   modalContent,
 }) => {
   return (
-    <Backdrop onClick={handleClose}>
+    <Backdrop>
       <ModalStyle
         onClick={(e) => e.stopPropagation()}
         variants={dropIn}

@@ -63,5 +63,5 @@ export const ActionText = styled.div<{
   text-transform: uppercase;
   font-weight: ${(props) => (props.fontWeight ? `${props.fontWeight}` : 800)};
   font-size: ${(props) => (props.fontSize ? `${props.fontSize}px` : "14px")};
-  text-align: ${(props) => (props.textAlign ? props.textAlign : "center")};
+  text-align: ${(props) => (props.textAlign ? props.textAlign : "left")};
 `;

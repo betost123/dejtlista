@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.7",
+    "firebase": "^9.15.0",
     "framer-motion": "^7.5.4",
     "gatsby": "^4.24.4",
     "gatsby-plugin-google-fonts": "^1.0.1",

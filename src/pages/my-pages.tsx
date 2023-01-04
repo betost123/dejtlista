@@ -321,4 +321,4 @@ const MyPages = () => {
 
 export default MyPages;
 
-export const Head: HeadFC = () => <title>Zertified</title>;
+export const Head: HeadFC = () => <title>oskar o betina</title>;

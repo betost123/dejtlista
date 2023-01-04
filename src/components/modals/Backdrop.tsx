@@ -6,7 +6,7 @@ const BackdropStyle = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
-  background: #000000e1;
+  background: #000000f6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,7 @@ const BackdropStyle = styled(motion.div)`
 
 const Backdrop: React.FunctionComponent<{
   children: any;
-  onClick: () => void;
+  onClick?: () => void;
 }> = ({ children, onClick }) => {
   return (
     <BackdropStyle

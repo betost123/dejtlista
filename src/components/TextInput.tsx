@@ -10,6 +10,7 @@ interface TextInputProps {
   onChange?: (event: any) => void;
   hintText?: string;
   variant?: "secondary" | "primary";
+  value?: string;
 }
 
 const InputContainer = styled.div<{ variant: "primary" | "secondary" }>`
@@ -59,6 +60,8 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({
   endAdornmentText,
   hintText,
   variant = "primary",
+  onChange,
+  value,
 }) => {
   return (
     <>
@@ -70,7 +73,12 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({
           {title}
         </Body>
         <Content>
-          <Input placeholder={placeholder} variant={variant} />
+          <Input
+            placeholder={placeholder}
+            variant={variant}
+            onChange={onChange}
+            value={value}
+          />
           {endAdornmentText && (
             <ActionText color={variant === "primary" ? "white" : "black"}>
               {endAdornmentText}
