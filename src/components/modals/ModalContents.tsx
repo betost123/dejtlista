@@ -29,7 +29,7 @@ export const ApplyContent: React.FunctionComponent<Props> = ({
   };
 
   const onClickLogIn = () => {
-    if (password.toLowerCase() === "bingo" || password === "jagälskardig") {
+    if (password.toLowerCase() === "bingo" || password === "jagälskardigg") {
       handleClose();
     } else {
       setError(true);
