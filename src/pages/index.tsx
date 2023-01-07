@@ -102,55 +102,58 @@ const IndexPage = () => {
 
   return (
     <div>
-      <Container>
-        <ContentContainer>
-          <Headline color='white'>En riktigt go lista</Headline>
-          <HorizontalSpacer spacing={2} />
-          <Row>
-            <Col
-              md={8}
-              xs={12}
-              style={{ border: "0.5px solid #6E26FC", padding: "1rem" }}
-            >
-              Lägg till dejt
-              <HorizontalSpacer spacing={1} />
-              <TextInput onChange={onWriteNewTask} value={newTask} />
-              <HorizontalSpacer spacing={1} />
-              <Row justify='center'>
-                {newTask.length > 0 && (
-                  <CheckboxButton onClick={onClickSaveDate}>
-                    <Body color='white'>spara</Body>
-                  </CheckboxButton>
-                )}
-              </Row>
-            </Col>
-          </Row>
-
-          <HorizontalSpacer spacing={2} />
-          <Row align='center'>
-            <Col md={8} xs={12}>
-              <Row>
-                {tasks?.map((task: any, index: number) => (
-                  <ListItem md={12} key={task.id}>
-                    <ActionText>{task.title}</ActionText>
-                    <CheckboxButton onClick={() => onCheckTasks(index)}>
-                      {task.checked ? <CrownIcon /> : <CheckboxIcon />}
+      {" "}
+      {!modalOpen && (
+        <Container>
+          <ContentContainer>
+            <Headline color='white'>En riktigt go lista</Headline>
+            <HorizontalSpacer spacing={2} />
+            <Row>
+              <Col
+                md={8}
+                xs={12}
+                style={{ border: "0.5px solid #6E26FC", padding: "1rem" }}
+              >
+                Lägg till dejt
+                <HorizontalSpacer spacing={1} />
+                <TextInput onChange={onWriteNewTask} value={newTask} />
+                <HorizontalSpacer spacing={1} />
+                <Row justify='center'>
+                  {newTask.length > 0 && (
+                    <CheckboxButton onClick={onClickSaveDate}>
+                      <Body color='white'>spara</Body>
                     </CheckboxButton>
-                  </ListItem>
-                ))}
-              </Row>
-            </Col>
-            <Col md={4}>
-              <Row justify='center'>
-                <SmallHeadline color='#87FF5D'>
-                  Avklarat {completed.length} / {tasks?.length}
-                </SmallHeadline>
-              </Row>
-            </Col>
-          </Row>
-          <Headline color='#87FF5D'>Jag tycker om dig!!!</Headline>
-        </ContentContainer>
-      </Container>
+                  )}
+                </Row>
+              </Col>
+            </Row>
+
+            <HorizontalSpacer spacing={2} />
+            <Row align='center'>
+              <Col md={8} xs={12}>
+                <Row>
+                  {tasks?.map((task: any, index: number) => (
+                    <ListItem md={12} key={task.id}>
+                      <ActionText>{task.title}</ActionText>
+                      <CheckboxButton onClick={() => onCheckTasks(index)}>
+                        {task.checked ? <CrownIcon /> : <CheckboxIcon />}
+                      </CheckboxButton>
+                    </ListItem>
+                  ))}
+                </Row>
+              </Col>
+              <Col md={4}>
+                <Row justify='center'>
+                  <SmallHeadline color='#87FF5D'>
+                    Avklarat {completed.length} / {tasks?.length}
+                  </SmallHeadline>
+                </Row>
+              </Col>
+            </Row>
+            <Headline color='#87FF5D'>Jag tycker om dig!!!</Headline>
+          </ContentContainer>
+        </Container>
+      )}
       <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
         {modalOpen && (
           <Modal
