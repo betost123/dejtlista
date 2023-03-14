@@ -18,23 +18,24 @@ import { CrownIcon } from "../components/icons/CrownIcon";
 import { allTasks } from "../firestore/getTasks";
 import { updateTodos } from "../firestore/updateTasks";
 import TextInput from "../components/TextInput";
+import ImageUpload from "../components/ImageUpload";
+import { ChevronDownIcon } from "../components/icons/ChevronDown";
+import TaskCard from "../components/TaskCard";
 
 const ContentContainer = styled.div`
   padding: 2rem;
+  overflow-x: hidden;
+  max-width: 100vw;
 `;
 
 const ListItem = styled(Col)`
   padding: 1rem;
-  background-color: rgba(227, 214, 235, 0.288);
+  //background-color: rgba(227, 214, 235, 0.288);
   margin: 0.5rem;
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-
-  :hover {
-    opacity: 0.6;
-  }
 `;
 
 const CheckboxButton = styled.div`
@@ -57,7 +58,7 @@ let s4 = () => {
 };
 
 const IndexPage = () => {
-  const [modalOpen, setModalOpen] = React.useState(true);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const [tasks, setTasks] = React.useState<any>([]);
   const [docId, setDocId] = React.useState("");
 
@@ -65,7 +66,7 @@ const IndexPage = () => {
 
   React.useEffect(() => {
     async function fetchMyAPI() {
-      const response = await allTasks();
+      const response: any = await allTasks();
       setTasks(response[0].tasks);
       setDocId(response[0].docId);
     }
@@ -80,6 +81,16 @@ const IndexPage = () => {
     const copy = [...tasks];
 
     copy[index].checked = !isChecked;
+
+    setTasks(copy);
+    updateTodos(docId, copy);
+  };
+
+  const onSubmitTaskImage = (index: number, imageUrl: string) => {
+    const task = tasks[index];
+    const copy = [...tasks];
+
+    copy[index].imageSrc = imageUrl;
 
     setTasks(copy);
     updateTodos(docId, copy);
@@ -102,9 +113,9 @@ const IndexPage = () => {
 
   return (
     <div>
-      {" "}
       {!modalOpen && (
         <Container>
+          <HorizontalSpacer spacing={2} />
           <ContentContainer>
             <Headline color='white'>En riktigt go lista</Headline>
             <HorizontalSpacer spacing={2} />
@@ -133,12 +144,15 @@ const IndexPage = () => {
               <Col md={8} xs={12}>
                 <Row>
                   {tasks?.map((task: any, index: number) => (
-                    <ListItem md={12} key={task.id}>
-                      <ActionText>{task.title}</ActionText>
-                      <CheckboxButton onClick={() => onCheckTasks(index)}>
-                        {task.checked ? <CrownIcon /> : <CheckboxIcon />}
-                      </CheckboxButton>
-                    </ListItem>
+                    <TaskCard
+                      key={task.id}
+                      index={index}
+                      taskTitle={task.title}
+                      taskCompleted={task.checked}
+                      taskImgSrc={task.imageSrc}
+                      onClickChangeCompleted={() => onCheckTasks(index)}
+                      onSubmitTaskImage={onSubmitTaskImage}
+                    />
                   ))}
                 </Row>
               </Col>
@@ -150,7 +164,9 @@ const IndexPage = () => {
                 </Row>
               </Col>
             </Row>
-            <Headline color='#87FF5D'>Jag tycker om dig!!!</Headline>
+            <Row justify='center'>
+              <Headline color='#87FF5D'>Jag tycker om dig!!!</Headline>
+            </Row>
           </ContentContainer>
         </Container>
       )}
