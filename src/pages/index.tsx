@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { HeadFC } from "gatsby";
+import { HeadFC, Link } from "gatsby";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import { Col, Container, Row } from "react-grid-system";
@@ -13,13 +13,9 @@ import { HorizontalSpacer } from "../components/spacers";
 
 import Modal from "../components/modals/Modal";
 import { ApplyContent } from "../components/modals/ModalContents";
-import { CheckboxIcon } from "../components/icons/CheckboxIcon";
-import { CrownIcon } from "../components/icons/CrownIcon";
 import { allTasks } from "../firestore/getTasks";
 import { updateTodos } from "../firestore/updateTasks";
 import TextInput from "../components/TextInput";
-import ImageUpload from "../components/ImageUpload";
-import { ChevronDownIcon } from "../components/icons/ChevronDown";
 import TaskCard from "../components/TaskCard";
 
 const ContentContainer = styled.div`
@@ -45,13 +41,24 @@ const CheckboxButton = styled.div`
   }
 `;
 
+const SelectButtons = styled.div<{ selected: boolean }>`
+  border: ${(props) =>
+    props.selected ? "0.5px solid black" : "0.5px solid #87FF5D"};
+  padding: 1rem;
+  background-color: ${(props) => (props.selected ? "#87FF5D" : undefined)};
+  //width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 interface TaskObject {
   id: string;
   title: string;
   checked: boolean;
+  imageSrc?: string;
 }
 
-let s4 = () => {
+export let s4 = () => {
   return Math.floor((1 + Math.random()) * 0x10000)
     .toString(16)
     .substring(1);
@@ -118,7 +125,22 @@ const IndexPage = () => {
           <HorizontalSpacer spacing={2} />
           <ContentContainer>
             <Headline color='white'>En riktigt go lista</Headline>
-            <HorizontalSpacer spacing={2} />
+            <HorizontalSpacer spacing={4} />
+            <Row justify='between' style={{ margin: -15 }}>
+              <Col xs={6}>
+                <SelectButtons selected={true}>
+                  <ActionText color='black'>Dejter</ActionText>
+                </SelectButtons>
+              </Col>
+              <Col xs={6}>
+                <Link to='/restaurants' style={{ textDecoration: "none" }}>
+                  <SelectButtons selected={false}>
+                    <ActionText color='#87FF5D'>Restauranger</ActionText>
+                  </SelectButtons>
+                </Link>
+              </Col>
+            </Row>
+            <HorizontalSpacer spacing={4} />
             <Row>
               <Col
                 md={8}
